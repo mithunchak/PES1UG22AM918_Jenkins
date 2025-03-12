@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'g++ -o my_program my_program.cpp'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh './my_program'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+            }
+        }
+    }
+
+    post {
+        failure {
+            echo 'Pipeline failed'
+        }
+    }
+}
