@@ -4,19 +4,27 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'g++ -o hello hello.cpp'
+                script {
+                    echo "Building the C++ program..."
+                    sh 'g++ -o PES1UG22AM918-1 main.cpp'  // Compile C++ file
+                }
             }
         }
 
         stage('Test') {
             steps {
-                sh './hello'
+                script {
+                    echo "Testing the compiled program..."
+                    sh './PES1UG22AM918-1'  // Execute compiled program
+                }
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying application...'
+                script {
+                    echo "Deploying the application (Placeholder step)..."
+                }
             }
         }
     }
